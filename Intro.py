@@ -1,5 +1,7 @@
 import streamlit as st
 from PIL import Image
+import requests
+import json
 
 # Configuración de la página
 st.set_page_config(
@@ -8,7 +10,7 @@ st.set_page_config(
     layout="wide"
 )
 
-# CSS personalizado para el tema de fantasía morado pastel
+# CSS personalizado para el tema de fantasía morado pastel con animaciones
 st.markdown("""
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
@@ -56,21 +58,6 @@ st.markdown("""
         color: white;
     }
     
-    .stButton>button {
-        background: linear-gradient(45deg, #9370db, #8a2be2);
-        color: white;
-        border: none;
-        border-radius: 25px;
-        padding: 10px 20px;
-        font-weight: 500;
-        transition: all 0.3s ease;
-    }
-    
-    .stButton>button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(147, 112, 219, 0.4);
-    }
-    
     .card {
         background: rgba(255, 255, 255, 0.95);
         border-radius: 15px;
@@ -78,12 +65,48 @@ st.markdown("""
         margin: 10px 0;
         border: 1px solid #e6e6fa;
         box-shadow: 0 4px 12px rgba(147, 112, 219, 0.1);
-        transition: transform 0.3s ease;
+        transition: all 0.3s ease;
+        height: 320px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
     
     .card:hover {
         transform: translateY(-5px);
-        box-shadow: 0 8px 20px rgba(147, 112, 219, 0.2);
+        box-shadow: 0 8px 25px rgba(147, 112, 219, 0.2);
+    }
+    
+    .card-content {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .card-icon {
+        height: 80px;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .card-title {
+        color: #9370db;
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 10px;
+        min-height: 40px;
+        display: flex;
+        align-items: center;
+    }
+    
+    .card-description {
+        color: #666;
+        font-size: 13px;
+        line-height: 1.4;
+        flex-grow: 1;
+        margin-bottom: 15px;
     }
     
     .link-button {
@@ -93,20 +116,62 @@ st.markdown("""
         border-radius: 20px;
         text-decoration: none;
         display: inline-block;
-        margin-top: 10px;
+        text-align: center;
         font-size: 14px;
         transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+        width: 100%;
     }
     
     .link-button:hover {
         transform: scale(1.05);
         box-shadow: 0 4px 12px rgba(147, 112, 219, 0.3);
+        color: white;
+        text-decoration: none;
+    }
+    
+    .lottie-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 </style>
 """, unsafe_allow_html=True)
 
-# Título principal
-st.title("✨ Aplicaciones de Inteligencia Artificial")
+# Lottie animations JSON para cada card (simplificadas)
+lottie_animations = [
+    # Animaciones tiernas para cada una de las 20 cards
+    {"url": "https://assets1.lottiefiles.com/packages/lf20_gns0rlrk.json"},  # Robot
+    {"url": "https://assets1.lottiefiles.com/packages/lf20_kxsd2ytq.json"},  # Voice
+    {"url": "https://assets1.lottiefiles.com/packages/lf20_5mkr3lua.json"},  # Brain
+    {"url": "https://assets1.lottiefiles.com/packages/lf20_vybwn7df.json"},  # Microphone
+    {"url": "https://assets1.lottiefiles.com/packages/lf20_u8jppxsl.json"},  # Data
+    {"url": "https://assets1.lottiefiles.com/packages/lf20_5mkm9egb.json"},  # Audio Wave
+    {"url": "https://assets1.lottiefiles.com/packages/lf20_ibkg3j.json"},   # Document
+    {"url": "https://assets1.lottiefiles.com/packages/lf20_issg1qzi.json"}, # Camera
+    {"url": "https://assets1.lottiefiles.com/packages/lf20_5nk02qkz.json"}, # IoT
+    {"url": "https://assets1.lottiefiles.com/packages/lf20_vybwn7df.json"}, # Chat
+    {"url": "https://assets1.lottiefiles.com/packages/lf20_gns0rlrk.json"}, # Face ID
+    {"url": "https://assets1.lottiefiles.com/packages/lf20_5mkm9egb.json"}, # Magic Wand
+    {"url": "https://assets1.lottiefiles.com/packages/lf20_u8jppxsl.json"}, # Heart
+    {"url": "https://assets1.lottiefiles.com/packages/lf20_ibkg3j.json"},   # Translate
+    {"url": "https://assets1.lottiefiles.com/packages/lf20_issg1qzi.json"}, # Recommendation
+    {"url": "https://assets1.lottiefiles.com/packages/lf20_5nk02qkz.json"}, # Alert
+    {"url": "https://assets1.lottiefiles.com/packages/lf20_vybwn7df.json"}, # NLP
+    {"url": "https://assets1.lottiefiles.com/packages/lf20_gns0rlrk.json"}, # Vision
+    {"url": "https://assets1.lottiefiles.com/packages/lf20_5mkm9egb.json"}, # Automation
+    {"url": "https://assets1.lottiefiles.com/packages/lf20_u8jppxsl.json"}  # Prediction
+]
+
+# Función para mostrar Lottie animation
+def load_lottieanimation(url):
+    try:
+        r = requests.get(url)
+        if r.status_code == 200:
+            return r.json()
+    except:
+        return None
 
 # Sidebar mejorado
 with st.sidebar:
@@ -130,13 +195,16 @@ with st.sidebar:
     </div>
     """, unsafe_allow_html=True)
 
+# Título principal
+st.title("✨ Aplicaciones de Inteligencia Artificial")
+
 # Enlace principal
 url_ia = "https://sites.google.com/view/aplicacionesdeia/inicio"
 st.markdown(f"""
 <div style='background: linear-gradient(45deg, #9370db, #8a2be2); padding: 20px; border-radius: 15px; text-align: center; margin: 20px 0;'>
     <h3 style='color: white; margin: 0;'>📚 Recursos y Ejercicios Prácticos</h3>
     <p style='color: #f0f0f0; margin: 10px 0;'>Encuentra páginas y ejercicios prácticos en el siguiente enlace</p>
-    <a href='{url_ia}' class='link-button' target='_blank'>Explorar Recursos</a>
+    <a href='{url_ia}' class='link-button' target='_blank' style='width: 200px; margin: 0 auto;'>Explorar Recursos</a>
 </div>
 """, unsafe_allow_html=True)
 
@@ -144,146 +212,147 @@ st.markdown(f"""
 apps = [
     {
         "title": "Conversión de texto a voz",
-        "image": "txt_to_audio2.png",
-        "description": "Usaremos una de las aplicaciones de Inteligencia Artificial",
-        "url": "https://imultimod.streamlit.app/"
+        "description": "Usaremos una de las aplicaciones de Inteligencia Artificial para convertir texto en audio natural",
+        "url": "https://imultimod.streamlit.app/",
+        "icon": "🔊"
     },
     {
         "title": "Reconocimiento de Objetos",
-        "image": "txt_to_audio.png",
-        "description": "Veremos como se detectan objetos en Imágenes",
-        "url": "https://xn3pg24ztuv6fdiqon8qn3.streamlit.app/"
+        "description": "Veremos como se detectan objetos en Imágenes usando modelos de visión artificial",
+        "url": "https://xn3pg24ztuv6fdiqon8qn3.streamlit.app/",
+        "icon": "📷"
     },
     {
         "title": "Entrenando Modelos",
-        "image": "OIG5.jpg",
-        "description": "Veremos como puedes usar tu modelo entrenado",
-        "url": "https://xn3pg24ztuv6fdiqon8qn3.streamlit.app/"
+        "description": "Veremos como puedes usar tu modelo entrenado y desplegarlo en aplicaciones",
+        "url": "https://xn3pg24ztuv6fdiqon8qn3.streamlit.app/",
+        "icon": "🧠"
     },
     {
         "title": "Conversión de voz a texto",
-        "image": "OIG8.jpg",
-        "description": "Aplicación que usa la conversión de voz a texto",
-        "url": "https://traductor-ab0sp9f6fi.streamlit.app/"
+        "description": "Aplicación que usa la conversión de voz a texto con alta precisión",
+        "url": "https://traductor-ab0sp9f6fi.streamlit.app/",
+        "icon": "🎤"
     },
     {
         "title": "Análisis de Datos",
-        "image": "data_analisis.png",
-        "description": "Veremos como se pueden analizar datos usando agentes",
-        "url": "https://asistpy-csv.streamlit.app/"
+        "description": "Veremos como se pueden analizar datos usando agentes inteligentes",
+        "url": "https://asistpy-csv.streamlit.app/",
+        "icon": "📊"
     },
     {
         "title": "Transcriptor Audio y Video",
-        "image": "OIG3.jpg",
-        "description": "Realizamos transcripciones de audio/video",
-        "url": "https://transcript-whisper.streamlit.app/"
+        "description": "Realizamos transcripciones precisas de audio y video automáticamente",
+        "url": "https://transcript-whisper.streamlit.app/",
+        "icon": "🎵"
     },
     {
         "title": "Generación en Contexto",
-        "image": "Chat_pdf.png",
-        "description": "Aplicación que usa RAG a partir de un documento (PDF)",
-        "url": "https://chatpdf-cc.streamlit.app/"
+        "description": "Aplicación que usa RAG a partir de documentos PDF para respuestas contextuales",
+        "url": "https://chatpdf-cc.streamlit.app/",
+        "icon": "📄"
     },
     {
         "title": "Análisis de Imagen",
-        "image": "OIG4.jpg",
-        "description": "Capacidad de análisis en Imágenes",
-        "url": "https://vision2-gpt4o.streamlit.app/"
+        "description": "Capacidad de análisis avanzado en Imágenes con modelos de última generación",
+        "url": "https://vision2-gpt4o.streamlit.app/",
+        "icon": "🖼️"
     },
     {
         "title": "Sistema Ciberfísico",
-        "image": "OIG6.jpg",
-        "description": "Capacidad de interacción con el mundo físico",
-        "url": "https://vision2-gpt4o.streamlit.app/"
+        "description": "Capacidad de interacción con el mundo físico mediante sensores y actuadores",
+        "url": "https://vision2-gpt4o.streamlit.app/",
+        "icon": "🌐"
     },
-    # Slots adicionales para completar 20
     {
         "title": "Chatbot Inteligente",
-        "image": "OIG5.jpg",
-        "description": "Asistente virtual con capacidades avanzadas",
-        "url": "#"
+        "description": "Asistente virtual con capacidades avanzadas de conversación natural",
+        "url": "#",
+        "icon": "🤖"
     },
     {
         "title": "Reconocimiento Facial",
-        "image": "OIG8.jpg",
-        "description": "Sistema de identificación biométrica",
-        "url": "#"
+        "description": "Sistema de identificación biométrica mediante análisis facial",
+        "url": "#",
+        "icon": "😊"
     },
     {
         "title": "Generación de Imágenes",
-        "image": "OIG3.jpg",
-        "description": "Creación de imágenes con IA",
-        "url": "#"
+        "description": "Creación de imágenes artísticas y realistas con inteligencia artificial",
+        "url": "#",
+        "icon": "🎨"
     },
     {
         "title": "Análisis de Sentimientos",
-        "image": "data_analisis.png",
-        "description": "Análisis emocional en texto",
-        "url": "#"
+        "description": "Análisis emocional en texto para entender opiniones y emociones",
+        "url": "#",
+        "icon": "💖"
     },
     {
         "title": "Traducción Automática",
-        "image": "txt_to_audio2.png",
-        "description": "Traducción en tiempo real",
-        "url": "#"
+        "description": "Traducción en tiempo real entre múltiples idiomas con alta precisión",
+        "url": "#",
+        "icon": "🌍"
     },
     {
-        "title": "Recomendaciones",
-        "image": "Chat_pdf.png",
-        "description": "Sistema de recomendación personalizado",
-        "url": "#"
+        "title": "Sistema de Recomendaciones",
+        "description": "Recomendación personalizada basada en preferencias y comportamiento",
+        "url": "#",
+        "icon": "⭐"
     },
     {
         "title": "Detección de Anomalías",
-        "image": "OIG4.jpg",
-        "description": "Identificación de patrones inusuales",
-        "url": "#"
+        "description": "Identificación de patrones inusuales y comportamientos sospechosos",
+        "url": "#",
+        "icon": "🚨"
     },
     {
         "title": "Procesamiento de Lenguaje",
-        "image": "OIG6.jpg",
-        "description": "Comprensión del lenguaje natural",
-        "url": "#"
+        "description": "Comprensión del lenguaje natural para análisis textual avanzado",
+        "url": "#",
+        "icon": "📝"
     },
     {
         "title": "Visión por Computadora",
-        "image": "txt_to_audio.png",
-        "description": "Análisis avanzado de imágenes",
-        "url": "#"
+        "description": "Análisis avanzado de imágenes y video para múltiples aplicaciones",
+        "url": "#",
+        "icon": "👁️"
     },
     {
         "title": "Automación de Procesos",
-        "image": "OIG5.jpg",
-        "description": "Automatización inteligente de tareas",
-        "url": "#"
+        "description": "Automatización inteligente de tareas repetitivas y procesos",
+        "url": "#",
+        "icon": "⚙️"
     },
     {
-        "title": "Predicción de Series Temporales",
-        "image": "data_analisis.png",
-        "description": "Análisis predictivo avanzado",
-        "url": "#"
+        "title": "Predicción de Series",
+        "description": "Análisis predictivo avanzado para forecasting y tendencias",
+        "url": "#",
+        "icon": "📈"
     }
 ]
 
-# Mostrar aplicaciones en 3 columnas
+# Mostrar aplicaciones en 4 columnas para mejor distribución
 st.markdown("## 🎯 Aplicaciones Disponibles")
 st.markdown("---")
 
-cols = st.columns(3)
+cols = st.columns(4)
 
 for i, app in enumerate(apps):
-    with cols[i % 3]:
+    with cols[i % 4]:
+        # Usar el icono como fallback si Lottie no carga
+        lottie_url = lottie_animations[i]["url"]
+        
         st.markdown(f"""
         <div class='card'>
-            <h4 style='color: #9370db; margin-bottom: 10px;'>{app['title']}</h4>
-            <div style='text-align: center; margin: 15px 0;'>
-                <div style='background: linear-gradient(45deg, #e6e6fa, #f5f0ff); 
-                            padding: 20px; border-radius: 10px; display: inline-block;'>
-                    <span style='font-size: 2em;'>🖼️</span>
+            <div class='card-content'>
+                <div class='card-icon'>
+                    <div style='font-size: 48px; color: #9370db;'>{app['icon']}</div>
                 </div>
+                <div class='card-title'>{app['title']}</div>
+                <div class='card-description'>{app['description']}</div>
+                <a href='{app['url']}' class='link-button' target='_blank'>Acceder a la App</a>
             </div>
-            <p style='color: #666; font-size: 14px; line-height: 1.4;'>{app['description']}</p>
-            <a href='{app['url']}' class='link-button' target='_blank'>Acceder</a>
         </div>
         """, unsafe_allow_html=True)
 
@@ -291,6 +360,15 @@ for i, app in enumerate(apps):
 st.markdown("---")
 st.markdown("""
 <div style='text-align: center; color: #9370db; padding: 20px;'>
-    <p style='margin: 0;'>✨ Desarrollado con Streamlit y IA ✨</p>
+    <p style='margin: 0; font-size: 14px;'>✨ Desarrollado con Streamlit y IA | Todas las cards tienen el mismo tamaño ✨</p>
 </div>
+""", unsafe_allow_html=True)
+
+# JavaScript para cargar Lottie animations (comentado ya que Streamlit tiene limitaciones)
+st.markdown("""
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+<script>
+// Las animaciones Lottie se cargarían aquí en un entorno web tradicional
+console.log('Lottie animations ready to load');
+</script>
 """, unsafe_allow_html=True)
