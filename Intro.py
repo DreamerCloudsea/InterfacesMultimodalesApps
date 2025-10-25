@@ -226,10 +226,10 @@ apps = [
         "icon": "🎤"
     },
     {
-        "title": "Transcriptor Audio y Video",
-        "description": "Realizamos transcripciones precisas de audio y video automáticamente",
-        "url": "https://transcript-whisper.streamlit.app/",
-        "icon": "🎵"
+        "title": "Detección de Bocetos",
+        "description": "Dibuja algo y mira si la IA descifra qué es",
+        "url": "https://drawrecog-3mbt5y5wwyextxtsnqsamh.streamlit.app/",
+        "icon": "🌐"
     },
     {
         "title": "Generación en Contexto",
