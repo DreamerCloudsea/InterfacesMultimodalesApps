@@ -214,7 +214,7 @@ apps = [
         "icon": "🧠"
     },
     {
-        "title": "Pdf Analizer",
+        "title": "Pdf Analyzer",
         "description": "Detecta la información que contiene un pdf",
         "url": "https://chatpdf-dulzyqnvxjn6f3j4xklfzg.streamlit.app/",
         "icon": "📄"
@@ -232,89 +232,83 @@ apps = [
         "icon": "🌐"
     },
     {
-        "title": "Generación en Contexto",
-        "description": "Aplicación que usa RAG a partir de documentos PDF para respuestas contextuales",
-        "url": "https://chatpdf-cc.streamlit.app/",
+        "title": "Reconococimiento de Números",
+        "description": "Dibuja un número y mira si la IA lo detecta correctamente",
+        "url": "https://6cj9yugoaccstbos6mr2kg.streamlit.app/",
         "icon": "📄"
     },
     {
-        "title": "Análisis de Imagen",
-        "description": "Capacidad de análisis avanzado en Imágenes con modelos de última generación",
-        "url": "https://vision2-gpt4o.streamlit.app/",
-        "icon": "🖼️"
+        "title": "Dibujos Mitológicos",
+        "description": "Dibuja algo y descubre cómo se asocia con la mitología",
+        "url": "https://histinf-zcbmlerdrrtb8xcx2qspe5.streamlit.app/",
+        "icon": "🔮"
     },
     {
-        "title": "Sistema Ciberfísico",
-        "description": "Capacidad de interacción con el mundo físico mediante sensores y actuadores",
-        "url": "https://vision2-gpt4o.streamlit.app/",
-        "icon": "🌐"
-    },
-    {
-        "title": "Chatbot Inteligente",
-        "description": "Asistente virtual con capacidades avanzadas de conversación natural",
-        "url": "#",
+        "title": "OCR Translator",
+        "description": "Extrae texto de imágenes y conviértelo a audio en diferentes idioma",
+        "url": "https://ocr-audio-enavkxpmvhn3bkq4yrqtzw.streamlit.app/",
         "icon": "🤖"
     },
     {
-        "title": "Reconocimiento Facial",
-        "description": "Sistema de identificación biométrica mediante análisis facial",
-        "url": "#",
-        "icon": "😊"
+        "title": "Sensor Reader",
+        "description": "Monitoreo de variables en tiempo real",
+        "url": "https://recepmqtt-czec5ke5fnb8cku6qcei5j.streamlit.app/",
+        "icon": "📡"
     },
     {
-        "title": "Generación de Imágenes",
-        "description": "Creación de imágenes artísticas y realistas con inteligencia artificial",
-        "url": "#",
-        "icon": "🎨"
+        "title": "Control MQTT",
+        "description": "Envía valores a tus programas",
+        "url": "https://sendcmqtt-tappjjpcr473nu6i9ck9eo.streamlit.app/",
+        "icon": "🌡️"
     },
     {
-        "title": "Análisis de Sentimientos",
-        "description": "Análisis emocional en texto para entender opiniones y emociones",
-        "url": "#",
-        "icon": "💖"
-    },
-    {
-        "title": "Traducción Automática",
-        "description": "Traducción en tiempo real entre múltiples idiomas con alta precisión",
-        "url": "#",
+        "title": "Analizador TF-IDF",
+        "description": "Esta herramienta analiza la similitud semántica entre preguntas y documentosl",
+        "url": "https://tdfesp-gw3knzfev6uuy2ypzmnfro.streamlit.app/",
         "icon": "🌍"
     },
     {
-        "title": "Sistema de Recomendaciones",
-        "description": "Recomendación personalizada basada en preferencias y comportamiento",
-        "url": "#",
+        "title": "Conversor Texto a Audio",
+        "description": "Ingresa texto y conviértelo en un audio",
+        "url": "https://textau-vq4d4rzu5cpx6fwxuheota.streamlit.app/",
+        "icon": "🎤"
+    },
+    {
+        "title": "TF-IDF Analysis",
+        "description": "Analiza texto y te ayuda a responder preguntas respecto a este",
+        "url": "https://8y5wp8m4zafle8ftocb67f.streamlit.app/",
         "icon": "⭐"
     },
     {
-        "title": "Detección de Anomalías",
-        "description": "Identificación de patrones inusuales y comportamientos sospechosos",
-        "url": "#",
+        "title": "Reconocimiento de Imágenes",
+        "description": "Toma una foto para que el programa la analice",
+        "url": "https://dxxx3fldp8od8ysl2ikxav.streamlit.app/",
         "icon": "🚨"
     },
     {
-        "title": "Procesamiento de Lenguaje",
-        "description": "Comprensión del lenguaje natural para análisis textual avanzado",
-        "url": "#",
+        "title": "Traductor Inteligente",
+        "description": "Graba tu audio y traduce la información en varios idiomas",
+        "url": "https://traductor-a2iwpgh9nuhuc9mkyldk8j.streamlit.app/",
         "icon": "📝"
     },
     {
-        "title": "Visión por Computadora",
-        "description": "Análisis avanzado de imágenes y video para múltiples aplicaciones",
-        "url": "#",
+        "title": "Mood Analyzer",
+        "description": "Describe cómo te siente y mira las recomendaciones",
+        "url": "https://q5qvtqddw5xqdwqnnfxizq.streamlit.app/",
+        "icon": "💕"
+    },
+    {
+        "title": "Image Analyzer",
+        "description": "Sube una imagen y haz preguntas sobre esta",
+        "url": "https://visionapp-npvocfvn4dgwsnqxtqqu3w.streamlit.app/",
         "icon": "👁️"
     },
     {
-        "title": "Automación de Procesos",
-        "description": "Automatización inteligente de tareas repetitivas y procesos",
-        "url": "#",
+        "title": "Vision App",
+        "description": "Detección de objetos en tiempo real",
+        "url": "https://yolov5-jqm3epsmncbffdvqjnhz8s.streamlit.app/",
         "icon": "⚙️"
     },
-    {
-        "title": "Predicción de Series",
-        "description": "Análisis predictivo avanzado para forecasting y tendencias",
-        "url": "#",
-        "icon": "📈"
-    }
 ]
 
 # Mostrar aplicaciones en 4 columnas
