@@ -318,7 +318,7 @@ apps = [
 ]
 
 # Mostrar aplicaciones en 4 columnas
-st.markdown('<div class="section-title">🎯 Aplicaciones Disponibles</div>', unsafe_allow_html=True)
+st.markdown('<div class="section-title">Aplicaciones Disponibles</div>', unsafe_allow_html=True)
 
 cols = st.columns(4)
 
@@ -336,11 +336,3 @@ for i, app in enumerate(apps):
             </div>
         </div>
         """, unsafe_allow_html=True)
-
-# Footer mejorado
-st.markdown("""
-<div class='footer'>
-    <p style='margin: 0;'>✨ Desarrollado con Streamlit y IA | Portal de Aplicaciones Inteligentes ✨</p>
-    <p style='margin: 5px 0 0 0; font-size: 12px; opacity: 0.8;'>Tema morado oscuro elegante</p>
-</div>
-""", unsafe_allow_html=True)
