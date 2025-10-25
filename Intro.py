@@ -193,16 +193,6 @@ with st.sidebar:
 # Título principal
 st.title("✨ Aplicaciones de Inteligencia Artificial")
 
-# Enlace principal con nuevo diseño
-url_ia = "https://sites.google.com/view/aplicacionesdeia/inicio"
-st.markdown(f"""
-<div class='header-banner'>
-    <h3 style='color: white; margin: 0; text-shadow: 1px 1px 4px rgba(0,0,0,0.3);'>📚 Recursos y Ejercicios Prácticos</h3>
-    <p style='color: #f0f0f0; margin: 15px 0; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);'>Encuentra páginas y ejercicios prácticos en el siguiente enlace</p>
-    <a href='{url_ia}' class='link-button' target='_blank' style='width: 200px; margin: 0 auto; display: block;'>Explorar Recursos</a>
-</div>
-""", unsafe_allow_html=True)
-
 # Lista de aplicaciones con 20 slots
 apps = [
     {
