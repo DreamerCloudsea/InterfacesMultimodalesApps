@@ -214,16 +214,16 @@ apps = [
         "icon": "🧠"
     },
     {
-        "title": "Conversión de voz a texto",
-        "description": "Aplicación que usa la conversión de voz a texto con alta precisión",
-        "url": "https://traductor-ab0sp9f6fi.streamlit.app/",
-        "icon": "🎤"
+        "title": "Pdf Analizer",
+        "description": "Detecta la información que contiene un pdf",
+        "url": "https://chatpdf-dulzyqnvxjn6f3j4xklfzg.streamlit.app/",
+        "icon": "📄"
     },
     {
-        "title": "Análisis de Datos",
-        "description": "Veremos como se pueden analizar datos usando agentes inteligentes",
-        "url": "https://asistpy-csv.streamlit.app/",
-        "icon": "📊"
+        "title": "Control con Voz",
+        "description": "Controlar variables por medio de comandos de voz",
+        "url": "https://ctrlvoice-6tk75bepfzqejsrcituana.streamlit.app/",
+        "icon": "🎤"
     },
     {
         "title": "Transcriptor Audio y Video",
