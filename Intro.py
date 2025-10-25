@@ -196,21 +196,21 @@ st.title("✨ Aplicaciones de Inteligencia Artificial")
 # Lista de aplicaciones con 20 slots
 apps = [
     {
-        "title": "Conversión de texto a voz",
-        "description": "Usaremos una de las aplicaciones de Inteligencia Artificial para convertir texto en audio natural",
-        "url": "https://imultimod.streamlit.app/",
-        "icon": "🔊"
+        "title": "Intro modificada",
+        "description": "Genera mensajitos de acuerdo al estado de ánimo",
+        "url": "https://sldz8n54exqwjrjywlsjsb.streamlit.app/",
+        "icon": "😊"
     },
     {
-        "title": "Reconocimiento de Objetos",
-        "description": "Veremos como se detectan objetos en Imágenes usando modelos de visión artificial",
-        "url": "https://xn3pg24ztuv6fdiqon8qn3.streamlit.app/",
-        "icon": "📷"
+        "title": "Analizador de Sentimientos",
+        "description": "Describe cómo te sientes y descubre qué tan malo es",
+        "url": "https://7dc7lkisw7zk2vlx5mypgm.streamlit.app/",
+        "icon": "💖"
     },
     {
-        "title": "Entrenando Modelos",
-        "description": "Veremos como puedes usar tu modelo entrenado y desplegarlo en aplicaciones",
-        "url": "https://xn3pg24ztuv6fdiqon8qn3.streamlit.app/",
+        "title": "Reconocimiento de Caracteres",
+        "description": "Toma una foto y mira si detecta el texto",
+        "url": "https://characters-4aw4mgk6egebtktb8yrxbj.streamlit.app/",
         "icon": "🧠"
     },
     {
