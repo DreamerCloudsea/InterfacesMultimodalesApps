@@ -327,7 +327,7 @@ st.markdown("""
         </div>
         <div class="hero-meta-item">
             <span class="hero-meta-label">Proyectos</span>
-            <span class="hero-meta-value">15</span>
+            <span class="hero-meta-value">23</span>
         </div>
     </div>
 </div>
@@ -436,6 +436,69 @@ projects = [
         "title": "Detección de Gestos",
         "desc": "Reconocimiento de gestos con las manos en tiempo real mediante visión artificial.",
         "links": [("Abrir app", "https://detecciongestos-4y9rmt8daniuvt3c9wqp84.streamlit.app/", "primary")]
+    },
+    {
+        "platform": "Streamlit",
+        "icon": "🧠",
+        "title": "Generador de Texto LSTM",
+        "desc": "Genera texto automáticamente usando una red neuronal recurrente LSTM entrenada con NLP.",
+        "links": [("Abrir app", "https://lstmnlp-84mdovwzvpnbrwdqcnkfyy.streamlit.app/", "primary")]
+    },
+    {
+        "platform": "Streamlit",
+        "icon": "📚",
+        "title": "RAG — Chat con PDF",
+        "desc": "Generación Aumentada por Recuperación: chatea e interroga cualquier documento PDF con IA.",
+        "links": [("Abrir app", "https://chatpdf-k2hdrbhth9nzyssieonrnw.streamlit.app/", "primary")]
+    },
+    {
+        "platform": "Streamlit",
+        "icon": "🖼️",
+        "title": "Análisis de Imagen con OpenAI",
+        "desc": "Sube una imagen y obtén un análisis detallado generado por los modelos de visión de OpenAI.",
+        "links": [("Abrir app", "https://visionapp-94oyfnbrmymhereiae3fie.streamlit.app/", "primary")]
+    },
+    {
+        "platform": "Streamlit",
+        "icon": "✍️",
+        "title": "Reconocimiento de Caracteres Escritos a Mano",
+        "desc": "Dibuja o sube una imagen con texto escrito a mano y la IA lo reconoce automáticamente.",
+        "links": [("Abrir app", "https://bc5zrgtvfahjnllk6mvbly.streamlit.app/", "primary")]
+    },
+    {
+        "platform": "Streamlit",
+        "icon": "🎨",
+        "title": "Análisis de Dibujo",
+        "desc": "Dibuja algo y deja que la IA interprete y analice tu creación.",
+        "links": [("Abrir app", "https://drawrecog-nojdczqptmhp7exzpvp7zr.streamlit.app/", "primary")]
+    },
+    {
+        "platform": "Streamlit",
+        "icon": "🖌️",
+        "title": "Tablero de Dibujo Inteligente",
+        "desc": "Tablero interactivo de dibujo potenciado por OpenAI para análisis e interpretación creativa.",
+        "links": [("Abrir app", "https://histinf-zjdwqbswxhxkjcxbqmvuoe.streamlit.app/", "primary")]
+    },
+    {
+        "platform": "Streamlit",
+        "icon": "📡",
+        "title": "Lector de Sensor MQTT",
+        "desc": "Monitoreo en tiempo real de variables físicas recibidas a través del protocolo MQTT.",
+        "links": [("Abrir app", "https://recepmqtt-gjmbkjenvby4gxmkazamyo.streamlit.app/", "primary")]
+    },
+    {
+        "platform": "Streamlit",
+        "icon": "🌡️",
+        "title": "Control MQTT — Envío de Valores",
+        "desc": "Envía valores y comandos a dispositivos físicos remotos mediante el protocolo MQTT.",
+        "links": [("Abrir app", "https://sendcmqtt-6nmnxli4lbubwbnebjjxaj.streamlit.app/", "primary")]
+    },
+    {
+        "platform": "Streamlit",
+        "icon": "🎙️",
+        "title": "Control por Voz — Servo y LED",
+        "desc": "Controla la posición de un servo y el estado de un LED mediante comandos de voz.",
+        "links": [("Abrir app", "https://ctrlvoice-qbmuewpnappz94hzfzpq5eq.streamlit.app/", "primary")]
     },
 ]
 
